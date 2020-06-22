@@ -5,28 +5,23 @@ if exists("syntax_on")
   syntax reset
 endif
 
-let colors_name="mephistopheles"
+let colors_name="selenizedless"
 " }}}
 " Colors {{{
-let s:bg = "232"
-let s:fg = "187"
-let s:mute = "109"
+let s:bg = "#103c48"
+let s:fg = "#adbcbc"
+let s:mute = "#72898f"
 
-if &background == "light"
-  let s:bg = "187"
-  let s:fg = "232"
+if exists("g:selenizedless_bg")
+  let s:bg = g:selenizedless_bg
 endif
 
-if exists("g:mephistopheles_bg")
-  let s:bg = g:mephistopheles_bg
+if exists("g:selenizedless_fg")
+  let s:bg = g:selenizedless_fg
 endif
 
-if exists("g:mephistopheles_fg")
-  let s:bg = g:mephistopheles_fg
-endif
-
-if exists("g:mephistopheles_muted")
-  let s:mute = g:mephistopheles_muted
+if exists("g:selenizedless_muted")
+  let s:mute = g:selenizedless_muted
 endif
 " }}}
 " Groups {{{
@@ -141,34 +136,34 @@ let s:clear = s:clear + [
 " }}}
 " Paint it all {{{
 for group in s:normals
-  exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:fg)
+  exec("hi " . group . " cterm=none guibg=" . s:bg . " guifg=" . s:fg)
 endfor
 
 for group in s:lamrons
-  exec("hi " . group . " cterm=none ctermbg=" . s:fg . " ctermfg=" . s:bg)
+  exec("hi " . group . " cterm=none guibg=" . s:fg . " guifg=" . s:bg)
 endfor
 
 for group in s:muted
-  exec("hi " . group . " cterm=none ctermbg=" . s:bg . " ctermfg=" . s:mute)
+  exec("hi " . group . " cterm=none guibg=" . s:bg . " guifg=" . s:mute)
 endfor
 
 for group in s:clear
-  exec("hi " . group . " cterm=none ctermbg=none ctermfg=none")
+  exec("hi " . group . " cterm=none ")
 endfor
 " }}}
 " Options {{{
-if exists("g:mephistopheles_syntax_bold")
+if exists("g:selenizedless_syntax_bold")
   exec("hi Function cterm=bold")
   exec("hi Statement cterm=bold")
   exec("hi Conditional cterm=bold")
   exec("hi Keyword cterm=bold")
 endif
 
-if exists("g:mephistopheles_syntax_mute")
-  exec("hi Function ctermfg=" . s:mute)
-  exec("hi Statement ctermfg=" . s:mute)
-  exec("hi Conditional ctermfg=" . s:mute)
-  exec("hi Keyword ctermfg=" . s:mute)
+if exists("g:selenizedless_syntax_mute")
+  exec("hi Function guifg=" . s:mute)
+  exec("hi Statement guifg=" . s:mute)
+  exec("hi Conditional guifg=" . s:mute)
+  exec("hi Keyword guifg=" . s:mute)
 endif
 " }}}
 " vim:foldmethod=marker:foldlevel=0
